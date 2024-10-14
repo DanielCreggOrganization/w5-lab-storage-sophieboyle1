@@ -27,7 +27,12 @@ Then we may create a new Ionic Angular Standalone project:
 ```bash
 ionic start w5-lab-storage blank --type=angular 
 ```
+Finally, change directory into your newly created project and serve your app. Open a new terminal in VS Code to continue issuing bash commands.
 
+```bash
+cd w5-lab-storage
+ionic serve
+```
 ### Initialization
 Next, import and initialize the `Storage` in your standalone component:
 
