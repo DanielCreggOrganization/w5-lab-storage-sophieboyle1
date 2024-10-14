@@ -71,35 +71,62 @@ In this example, we define a standalone Angular component that initializes Ionic
 ### Basic Example: Saving and Retrieving Data
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonButton, IonTextarea } from '@ionic/angular/standalone';
 import { IonicStorageModule, Storage } from '@ionic/storage-angular';
+import { FormsModule } from '@angular/forms';
 
 @Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicStorageModule],
-  selector: 'app-basic-storage',
-  template: `<div>
-               <button (click)="storeItem()">Store Item</button>
-               <button (click)="retrieveItem()">Retrieve Item</button>
-             </div>`
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonButton, IonTextarea, IonicStorageModule, FormsModule],
+  providers: [Storage]
 })
-export class BasicStorageComponent implements OnInit {
-  constructor(private storage: Storage) {}
+export class HomePage {
+  private storage = inject(Storage);
+  key: string = '';
+  value: string = '';
+  output: string = '';
+
+  constructor() {}
 
   async ngOnInit() {
     await this.storage.create();
   }
 
-  async storeItem() {
-    await this.storage.set('key', 'Hello, Ionic Storage!');
-    console.log('Item Stored!');
+  async setItem() {
+    await this.storage.set(this.key, this.value);
+    this.output = `Set ${this.key}: ${this.value}`;
   }
 
-  async retrieveItem() {
-    const value = await this.storage.get('key');
-    console.log('Retrieved Item:', value);
+  async getItem() {
+    const value = await this.storage.get(this.key);
+    this.output = `Get ${this.key}: ${value}`;
   }
 }
+```
+Add some buttons to call your methods and some text boxes to input data and an output string to display your data. 
+```html
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Storage Demo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Key</ion-label>
+    <ion-input [(ngModel)]="key"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Value</ion-label>
+    <ion-input [(ngModel)]="value"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="setItem()">Set Item</ion-button>
+  <ion-button expand="full" (click)="getItem()">Get Item</ion-button>
+</ion-content>
 ```
 
 ### Mermaid Diagram: Data Flow for Storing and Retrieving
