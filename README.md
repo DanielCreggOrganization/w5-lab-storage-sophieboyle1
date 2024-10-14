@@ -151,9 +151,11 @@ graph TD;
 2. Confirm the deletion by attempting to retrieve the data after deletion.
 
 ### Exercise 3: Create a new Movies page
-1. Use Ionic GUI componenets to improve your UI.
-2. Use your storage service.
-3. Store movie names and the year of their release.
+1. Generate a new ``movies`` page.
+2. Add a button to the bottom on the home page to navigate to your new movies page.
+3. Use your storage service.
+4. Store movie names and the year of their release.
+5. Use Ionic GUI componenets to improve your UI.
 
 ## Summary and Further Reading
 
