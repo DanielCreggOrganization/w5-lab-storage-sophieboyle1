@@ -150,8 +150,10 @@ graph TD;
 1. Create a new storage service that uses Ionic Storage
 2. Confirm the deletion by attempting to retrieve the data after deletion.
 
-### Exercise 3: Create a new Movies component which uses your storage service and scores movie names and the year of release.
+### Exercise 3: Create a new Movies page
 1. Use Ionic GUI componenets to improve your UI.
+2. Use your storage service.
+3. Store movie names and the year of their release.
 
 ## Summary and Further Reading
 
