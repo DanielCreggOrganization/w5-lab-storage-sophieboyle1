@@ -1,6 +1,6 @@
 {
-    "name": "Ubuntu and Ionic Latest",
-    "image": "mcr.microsoft.com/devcontainers/base:latest",
+    "name": "Ubuntu base with Ionic CLI latest",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
         "ghcr.io/devcontainers-contrib/features/ionic-cli": {
             "version": "latest"
