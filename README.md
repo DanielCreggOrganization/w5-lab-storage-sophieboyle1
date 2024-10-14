@@ -143,26 +143,15 @@ graph TD;
 ## Exercises
 
 ### Exercise 1: Create a New Storage Component
-1. Create a standalone Angular component named `UserPreferencesComponent`.
-2. Add two buttons: one for saving a user preference (e.g., theme) and one for retrieving it.
-3. Implement methods for storing and retrieving the preference using Ionic Storage.
+1. Implement the basic example above and extend it to test all of the Ionic Storage API, `set()`, `get()`, `remove()`, `clear()`, `keys()`, `length()`, `forEach()`.
+2. Add buttons for each method.
 
-**Hints**:
-- Use `this.storage.set('theme', 'dark')` to save a theme.
-- Use `this.storage.get('theme')` to retrieve the theme.
+### Exercise 2: Create a storage service
+1. Create a new storage service that uses Ionic Storage
+2. Confirm the deletion by attempting to retrieve the data after deletion.
 
-### Exercise 2: Update Stored Data
-1. Expand the `UserPreferencesComponent` to add an input field for entering a user name.
-2. Save the entered name to storage when a button is clicked.
-3. Retrieve and display the stored name on the screen.
-
-**Hints**:
-- Use Angular's `[(ngModel)]` to bind the input value.
-
-### Exercise 3: Delete Stored Data
-1. Add a button to delete the stored user name.
-2. Implement the delete functionality using `this.storage.remove('username')`.
-3. Confirm the deletion by attempting to retrieve the data after deletion.
+### Exercise 2: Create a new Movies component which uses your storage service and scores movie names and the year of release.
+1. Use Ionic GUI componenets to improve your UI.
 
 ## Summary and Further Reading
 
