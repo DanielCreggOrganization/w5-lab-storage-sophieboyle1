@@ -64,7 +64,7 @@ export class HomePage {
 }
 ```
 
-In this example, we define a standalone Angular component that initializes Ionic Storage and provides methods to save and retrieve data.
+In this example, we define a standalone Angular component that initializes Ionic Storage and provides methods to save and retrieve data. Check your console log to verify the storage is working. 
 
 ## Examples
 
