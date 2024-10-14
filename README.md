@@ -22,78 +22,111 @@ First, we need to install the storage package in our project:
 ```bash
 npm install @ionic/storage-angular
 ```
+Then we may create a new Ionic Angular Standalone project:
 
+```bash
+ionic start w5-lab-storage blank --type=angular 
+```
+Finally, change directory into your newly created project and serve your app. Open a new terminal in VS Code to continue issuing bash commands.
+
+```bash
+cd w5-lab-storage
+ionic serve
+```
 ### Initialization
-Next, import and initialize the `Storage` in your standalone component:
+Next, import and initialize the `Storage` in your Home component:
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
-import { IonicStorageModule, Storage } from '@ionic/storage-angular';
+import { Component, inject } from '@angular/core';
+import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonicStorageModule, Storage  } from '@ionic/storage-angular';
+
 
 @Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicStorageModule],
-  selector: 'app-storage-example',
-  template: `<div>
-               <button (click)="saveData()">Save Data</button>
-               <button (click)="getData()">Get Data</button>
-             </div>`
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonicStorageModule],
+  providers: [Storage]
 })
-export class StorageExampleComponent implements OnInit {
-  constructor(private storage: Storage) {}
+export class HomePage {
+  private storage = inject(Storage); // Injecting the Storage service
+  
+  constructor() {}
 
   async ngOnInit() {
-    await this.storage.create();
-  }
-
-  async saveData() {
-    await this.storage.set('username', 'Daniel');
-    console.log('Data saved');
-  }
-
-  async getData() {
-    const value = await this.storage.get('username');
-    console.log('Retrieved value:', value);
+    await this.storage.create(); // Initializes the storage engine
+    await this.storage.set('Name', 'John'); // Example usage of Storage
+    const storedValue = await this.storage.get('Name');
+    console.log('Stored Value:', storedValue);
   }
 }
 ```
 
-In this example, we define a standalone Angular component that initializes Ionic Storage and provides methods to save and retrieve data.
+In this example, we define a standalone Angular component that initializes Ionic Storage and provides methods to save and retrieve data. Check your console log to verify the storage is working. 
 
 ## Examples
 
 ### Basic Example: Saving and Retrieving Data
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonButton, IonTextarea } from '@ionic/angular/standalone';
 import { IonicStorageModule, Storage } from '@ionic/storage-angular';
+import { FormsModule } from '@angular/forms';
 
 @Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicStorageModule],
-  selector: 'app-basic-storage',
-  template: `<div>
-               <button (click)="storeItem()">Store Item</button>
-               <button (click)="retrieveItem()">Retrieve Item</button>
-             </div>`
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonButton, IonTextarea, IonicStorageModule, FormsModule],
+  providers: [Storage]
 })
-export class BasicStorageComponent implements OnInit {
-  constructor(private storage: Storage) {}
+export class HomePage {
+  private storage = inject(Storage);
+  key: string = '';
+  value: string = '';
+  output: string = '';
+
+  constructor() {}
 
   async ngOnInit() {
     await this.storage.create();
   }
 
-  async storeItem() {
-    await this.storage.set('key', 'Hello, Ionic Storage!');
-    console.log('Item Stored!');
+  async setItem() {
+    await this.storage.set(this.key, this.value);
+    this.output = `Set ${this.key}: ${this.value}`;
   }
 
-  async retrieveItem() {
-    const value = await this.storage.get('key');
-    console.log('Retrieved Item:', value);
+  async getItem() {
+    const value = await this.storage.get(this.key);
+    this.output = `Get ${this.key}: ${value}`;
   }
 }
+```
+Add some buttons to call your methods and some text boxes to input data and an output string to display your data. 
+```html
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Storage Demo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Key</ion-label>
+    <ion-input [(ngModel)]="key"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Value</ion-label>
+    <ion-input [(ngModel)]="value"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="setItem()">Set Item</ion-button>
+  <ion-button expand="full" (click)="getItem()">Get Item</ion-button>
+</ion-content>
 ```
 
 ### Mermaid Diagram: Data Flow for Storing and Retrieving
@@ -110,26 +143,15 @@ graph TD;
 ## Exercises
 
 ### Exercise 1: Create a New Storage Component
-1. Create a standalone Angular component named `UserPreferencesComponent`.
-2. Add two buttons: one for saving a user preference (e.g., theme) and one for retrieving it.
-3. Implement methods for storing and retrieving the preference using Ionic Storage.
+1. Implement the basic example above and extend it to test all of the Ionic Storage API, `set()`, `get()`, `remove()`, `clear()`, `keys()`, `length()`, `forEach()`.
+2. Add buttons for each method.
 
-**Hints**:
-- Use `this.storage.set('theme', 'dark')` to save a theme.
-- Use `this.storage.get('theme')` to retrieve the theme.
+### Exercise 2: Create a storage service
+1. Create a new storage service that uses Ionic Storage
+2. Confirm the deletion by attempting to retrieve the data after deletion.
 
-### Exercise 2: Update Stored Data
-1. Expand the `UserPreferencesComponent` to add an input field for entering a user name.
-2. Save the entered name to storage when a button is clicked.
-3. Retrieve and display the stored name on the screen.
-
-**Hints**:
-- Use Angular's `[(ngModel)]` to bind the input value.
-
-### Exercise 3: Delete Stored Data
-1. Add a button to delete the stored user name.
-2. Implement the delete functionality using `this.storage.remove('username')`.
-3. Confirm the deletion by attempting to retrieve the data after deletion.
+### Exercise 2: Create a new Movies component which uses your storage service and scores movie names and the year of release.
+1. Use Ionic GUI componenets to improve your UI.
 
 ## Summary and Further Reading
 
