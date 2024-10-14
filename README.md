@@ -17,21 +17,21 @@ The basic steps for using Ionic Storage in an Angular application are:
 3. **Usage**: Use Ionic Storage to store, retrieve, update, and remove data.
 
 ### Installation
-First, we need to install the storage package in our project:
-
-```bash
-npm install @ionic/storage-angular
-```
-Then we may create a new Ionic Angular Standalone project:
+First, we may create a new Ionic Angular Standalone project:
 
 ```bash
 ionic start w5-lab-storage blank --type=angular 
 ```
-Finally, change directory into your newly created project and serve your app. Open a new terminal in VS Code to continue issuing bash commands.
+Next, change directory into your newly created project and serve your app. Open a new terminal in VS Code to continue issuing bash commands.
 
 ```bash
 cd w5-lab-storage
 ionic serve
+```
+We need to install the storage package in our project:
+
+```bash
+npm install @ionic/storage-angular
 ```
 ### Initialization
 Next, import and initialize the `Storage` in your Home component:
