@@ -34,36 +34,32 @@ cd w5-lab-storage
 ionic serve
 ```
 ### Initialization
-Next, import and initialize the `Storage` in your standalone component:
+Next, import and initialize the `Storage` in your Home component:
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
-import { IonicStorageModule, Storage } from '@ionic/storage-angular';
+import { Component, inject } from '@angular/core';
+import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonicStorageModule, Storage  } from '@ionic/storage-angular';
+
 
 @Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicStorageModule],
-  selector: 'app-storage-example',
-  template: `<div>
-               <button (click)="saveData()">Save Data</button>
-               <button (click)="getData()">Get Data</button>
-             </div>`
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonicStorageModule],
+  providers: [Storage]
 })
-export class StorageExampleComponent implements OnInit {
-  constructor(private storage: Storage) {}
+export class HomePage {
+  private storage = inject(Storage); // Injecting the Storage service
+  
+  constructor() {}
 
   async ngOnInit() {
-    await this.storage.create();
-  }
-
-  async saveData() {
-    await this.storage.set('username', 'Daniel');
-    console.log('Data saved');
-  }
-
-  async getData() {
-    const value = await this.storage.get('username');
-    console.log('Retrieved value:', value);
+    await this.storage.create(); // Initializes the storage engine
+    await this.storage.set('Name', 'John'); // Example usage of Storage
+    const storedValue = await this.storage.get('Name');
+    console.log('Stored Value:', storedValue);
   }
 }
 ```
