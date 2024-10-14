@@ -154,8 +154,8 @@ graph TD;
 1. Generate a new ``movies`` page.
 2. Add a button to the bottom on the home page to navigate to your new movies page.
 3. Use your storage service.
-4. Store movie names and the year of their release.
-5. Use Ionic GUI componenets to improve your UI.
+4. Store movie names and the year of their release. Display the list and make items deletable. 
+5. Incorporate 4 ionic UI components into your template design. 
 
 ## Summary and Further Reading
 
