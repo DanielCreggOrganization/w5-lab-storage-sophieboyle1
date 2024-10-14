@@ -22,6 +22,11 @@ First, we need to install the storage package in our project:
 ```bash
 npm install @ionic/storage-angular
 ```
+Then we may create a new Ionic Angular Standalone prokect:
+
+```bash
+ionic start w5-lab-storage blank --type=angular 
+```
 
 ### Initialization
 Next, import and initialize the `Storage` in your standalone component:
