@@ -65,7 +65,7 @@ npm install @ionic/storage-angular
 <a name="initializing-storage"></a>
 ## 2. Initializing Ionic Storage
 
-We will initialize Ionic Storage in the `app.component.ts` file. This ensures that Storage is initialized once when the app starts and is available throughout the entire application.
+We will initialize Ionic Storage in the `main.ts` file. This ensures that Storage is initialized once when the app starts and is available throughout the entire application.
 
 ### Initialize Storage in `main.ts`
 
