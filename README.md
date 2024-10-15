@@ -259,7 +259,15 @@ Abstracting storage operations into a service promotes code reusability and main
      providedIn: 'root',
    })
    export class StorageService {
-     constructor(private storage: Storage) {}
+     private storage = inject(Storage);
+     
+     constructor() {
+       this.init();
+     }
+   
+     async init() {
+       await this.storage.create();
+     }
 
      // Storage methods with error handling
      public async set(key: string, value: any) {
