@@ -18,7 +18,7 @@ In this lab, we'll integrate Ionic Storage in an Angular standalone component. W
 
 1. [Setup and Installation](#setup)
 2. [Initializing Ionic Storage](#initializing-storage)
-3. [Using Ionic Storage Without SQLite](#using-storage)
+3. [Using Ionic Storage](#using-storage)
    - [Example 1: Basic Storage Operations](#example1)
    - [DIY Exercise 1: Extending Storage Functionality](#diy1)
 4. [Creating a Storage Service](#storage-service)
@@ -99,7 +99,7 @@ bootstrapApplication(AppComponent, {
 ---
 
 <a name="using-storage"></a>
-## 3. Using Ionic Storage Without SQLite
+## 3. Using Ionic Storage
 
 By default, Ionic Storage uses IndexedDB, WebSQL, or localStorage depending on availability and platform. This section will focus on using Ionic Storage with its default configuration.
 
