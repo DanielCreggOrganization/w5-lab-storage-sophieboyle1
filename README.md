@@ -67,26 +67,27 @@ npm install @ionic/storage-angular
 
 We will initialize Ionic Storage in the `app.component.ts` file. This ensures that Storage is initialized once when the app starts and is available throughout the entire application.
 
-### Initialize Storage in `app.component.ts`
+### Initialize Storage in `main.ts`
 
 ```typescript
 // src/app/app.component.ts
-import { Component } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
+import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
+
+import { routes } from './app/app.routes';
+import { AppComponent } from './app/app.component';
+
 import { Storage } from '@ionic/storage-angular';
 
-@Component({
-  selector: 'app-root',
-  template: '<ion-app><router-outlet></router-outlet></ion-app>',
-})
-export class AppComponent {
-  constructor(private storage: Storage) {
-    this.initStorage();
-  }
-
-  async initStorage() {
-    await this.storage.create();
-  }
-}
+bootstrapApplication(AppComponent, {
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    provideIonicAngular(),
+    provideRouter(routes, withPreloading(PreloadAllModules)),
+    Storage,
+  ],
+});
 ```
 
 **Explanation:**
