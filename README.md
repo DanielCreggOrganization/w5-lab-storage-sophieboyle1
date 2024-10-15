@@ -10,7 +10,7 @@ Ionic Storage is a powerful utility provided by the Ionic Framework for storing 
 - **Cross-platform Support**: Works seamlessly on Android, iOS, and the web.
 - **Easy to Use**: Provides a simple API for storing and retrieving data.
 
-In this lab, we'll integrate Ionic Storage in an Angular standalone component. We'll explore its key features through hands-on exercises and build a simple application that demonstrates these concepts. We'll follow best practices by initializing Ionic Storage in the `app.component.ts` file and include demonstrations of error handling using try-catch blocks.
+In this lab, we'll integrate Ionic Storage in an Angular standalone component. We'll explore its key features through hands-on exercises and build a simple application that demonstrates these concepts. We'll follow best practices by initializing Ionic Storage in the `main.ts` file and include demonstrations of error handling using try-catch blocks.
 
 ---
 
