@@ -70,7 +70,7 @@ We will initialize Ionic Storage in the `main.ts` file. This ensures that Storag
 ### Initialize Storage in `main.ts`
 
 ```typescript
-// src/app/app.component.ts
+// src/main.ts
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
