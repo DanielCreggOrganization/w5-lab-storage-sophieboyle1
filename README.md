@@ -131,7 +131,9 @@ Let's create a simple example to save and retrieve data using Ionic Storage.
      value: string = '';
      output: string = '';
 
-     constructor(private storage: Storage) {}
+     constructor(private storage: Storage) {
+       sotrage.create();
+     }
 
      async setItem() {
        try {
