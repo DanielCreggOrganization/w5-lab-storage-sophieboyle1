@@ -254,7 +254,7 @@ Abstracting storage operations into a service promotes code reusability and main
 
    ```typescript
    // src/app/services/storage.service.ts
-   import { Injectable } from '@angular/core';
+   import { Injectable, Inject } from '@angular/core';
    import { Storage } from '@ionic/storage-angular';
 
    @Injectable({
