@@ -560,17 +560,19 @@ Let's build a simple movies app that utilizes Ionic Storage without SQLite.
      <ion-button expand="full" (click)="addMovie()">Add Movie</ion-button>
 
      <ion-list>
-       <ion-item-sliding *ngFor="let movie of movies; let i = index">
-         <ion-item>
-           <ion-label>
-             <h2>{{ movie.name }}</h2>
-             <p>{{ movie.year }}</p>
-           </ion-label>
-         </ion-item>
-         <ion-item-options side="end">
-           <ion-item-option color="danger" (click)="deleteMovie(i)">Delete</ion-item-option>
-         </ion-item-options>
-       </ion-item-sliding>
+       @for (movie of movies; track movie; let i = $index) {
+         <ion-item-sliding>
+           <ion-item>
+             <ion-label>
+               <h2>{{ movie.name }}</h2>
+               <p>{{ movie.year }}</p>
+             </ion-label>
+           </ion-item>
+           <ion-item-options side="end">
+             <ion-item-option color="danger" (click)="deleteMovie(i)">Delete</ion-item-option>
+           </ion-item-options>
+         </ion-item-sliding>
+       }
      </ion-list>
 
      <ion-text color="danger" *ngIf="errorMessage">
