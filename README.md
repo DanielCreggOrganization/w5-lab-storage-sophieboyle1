@@ -218,6 +218,9 @@ Enhance the basic storage operations by implementing additional methods provided
    - Add methods for `remove()`, `clear()`, `keys()`, `length()`, and `forEach()`. Check out the [Ionic Storage - GitHub](https://github.com/ionic-team/ionic-storage) page for example usage of all these API calls.
    - Wrap each method in a `try-catch` block to handle potential errors.
    - Update the `output` property and log errors to the console.
+  
+   <a href="https://github.com/ionic-team/ionic-storage#api" target="_blank">Ionic Storage API Section</a>
+
 
 2. **Create Corresponding UI Elements**
 
