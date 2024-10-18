@@ -215,7 +215,7 @@ Enhance the basic storage operations by implementing additional methods provided
 
 1. **Implement Additional Methods with Error Handling**
 
-   - Add methods for `remove()`, `clear()`, `keys()`, `length()`, and `forEach()`.
+   - Add methods for `remove()`, `clear()`, `keys()`, `length()`, and `forEach()`. Check out the [Ionic Storage Documentation](https://ionicframework.com/docs/angular/storage) page for example usage of all these API calls.
    - Wrap each method in a `try-catch` block to handle potential errors.
    - Update the `output` property and log errors to the console.
 
